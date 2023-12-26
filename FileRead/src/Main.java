@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -38,12 +39,13 @@ public class Main {
                     matchList.matchList();
                 } else if (choice == 2) {
                     System.out.print("Enter the team name: ");
-                    String name = sc.next();
-                    matchList.searchByName(name);
+                    String name = sc.nextLine();
+                    String name1 = sc.nextLine();
+                    matchList.searchByName(name1);
                 } else {
                     System.out.print("Enter the date: ");
                     String date = sc.next();
-                    matchList.searchByDate(date);
+                    matchList.searchByDateClass(date);
                 }
             } else if (num == 3) {
                 System.out.println("For getting all player list press 1");

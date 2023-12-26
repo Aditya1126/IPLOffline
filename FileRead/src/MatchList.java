@@ -72,6 +72,8 @@ public class MatchList {
             String line = reader.readLine();
             String[] headers = line.split(",");
 
+
+
             // Print header with padding
             //System.out.printf("%-20s %-40s %-40s %-20s %-4s\n", headers[0], headers[1], headers[2], headers[3], headers[4]);
 
@@ -84,12 +86,39 @@ public class MatchList {
                 if (values[3].trim().equals(searchTerm)) {
                     teamList.add(values[1]);
                     teamList.add(values[2]);
+                    break;
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         return teamList;
+    }
+
+    public void searchByDateClass(String searchTerm){
+        String filePath = "MatchList.csv";
+        List<String> teamList=new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            // Read header line
+            String line = reader.readLine();
+            String[] headers = line.split(",");
+            System.out.printf("%-20s %-40s %-40s %-20s %-4s\n", headers[0], headers[1], headers[2], headers[3], headers[4]);
+
+            // Print header with padding
+            //System.out.printf("%-20s %-40s %-40s %-20s %-4s\n", headers[0], headers[1], headers[2], headers[3], headers[4]);
+
+            // Loop through each row
+
+            while ((line = reader.readLine()) != null) {
+                String[] values = line.split(",");
+                if (values[3].trim().equals(searchTerm)) {
+                    System.out.printf("%-20s %-40s %-40s %-20s %-4s\n", values[0], values[1], values[2], values[3], values[4]);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
